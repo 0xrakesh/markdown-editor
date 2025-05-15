@@ -36,7 +36,7 @@ export default async function DashboardPage() {
 
   const sharedDocuments =
     sharedWithUser?.map((item) => ({
-      document: item.document as unknown as Document,
+      document: item.document,
       permission: item.permission,
     })) || []
 

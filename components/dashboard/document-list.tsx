@@ -102,7 +102,7 @@ export function DocumentList({
       </CardContent>
       <CardFooter className="border-t pt-3">
         <Button asChild variant="ghost" className="w-full">
-          <Link href={`/view/${doc.id}`}>Open Document</Link>
+          {permission === "read" ? <Link href={`/view/${doc.id}`}>Open Document</Link> : <Link href={`/editor/${doc.id}`}>Open Document</Link>}
         </Button>
       </CardFooter>
     </Card>

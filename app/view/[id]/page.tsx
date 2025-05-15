@@ -5,6 +5,8 @@ import { Card } from "@/components/ui/card"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
+import rehypeHighlight from "rehype-highlight"
 
 interface ViewPageProps {
   params: {
@@ -67,16 +69,16 @@ export default async function ViewPage({ params }: ViewPageProps) {
               <h1 className="text-3xl font-bold">{document.title}</h1>
               <p className="text-muted-foreground">Created by {owner?.username || "Unknown"}</p>
             </div>
-            {user &&
-              (document.owner_id === user.id || (
-                <Button asChild variant="outline">
-                </Button>
-              ))}
+            {user && document.owner_id === user.id && (
+              <Button asChild variant="outline">
+                <Link href={`/editor/${id}`}>Edit Document</Link>
+              </Button>
+            )}
           </div>
 
           <Card className="p-6 prose max-w-none">
             {document.content ? (
-              <ReactMarkdown>{document.content}</ReactMarkdown>
+              <ReactMarkdown rehypePlugins={[rehypeHighlight, rehypeRaw]} >{document.content}</ReactMarkdown>
             ) : (
               <p className="text-muted-foreground italic">This document is empty</p>
             )}

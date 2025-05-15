@@ -67,8 +67,8 @@ export default async function EditorPage({ params }: EditorPageProps) {
         <main className="flex-1">
           <MarkdownEditor
             documentId={id}
-            initialTitle={sharedDocument.document.title}
-            initialContent={sharedDocument.document.content || ""}
+            initialTitle={sharedDocument.document?.title}
+            initialContent={sharedDocument.document?.content || ""}
           />
         </main>
       </div>

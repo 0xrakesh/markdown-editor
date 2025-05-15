@@ -134,7 +134,7 @@ export function MarkdownEditor({ documentId, initialTitle = "", initialContent =
         <TabsContent value="preview" className="mt-4">
           <Card className="p-4 min-h-[60vh]">
             <div className="prose max-w-none dark:prose-invert">
-              <ReactMarkdown rehypePlugins={[rehypeHighlight,rehypeRaw]}>
+              <ReactMarkdown rehypePlugins={[rehypeHighlight, rehypeRaw]}>
                 {content}
               </ReactMarkdown>
             </div>
